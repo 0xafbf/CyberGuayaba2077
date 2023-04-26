@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        float moveZ = Input.GetAxisRaw("Vertical");
 
-        Vector2 moveDir = new Vector2(moveX, moveY).normalized;
-        Vector2 targetVelocity = moveDir * moveSpeed;
+        Vector3 moveDir = new Vector3(moveX, 0 ,moveZ).normalized;
+        Vector3 targetVelocity = moveDir * moveSpeed;
 
-        rb.velocity = Vector2.MoveTowards(rb.velocity, targetVelocity, Time.deltaTime * (rb.velocity.magnitude < targetVelocity.magnitude ? acceleration : deacceleration));
+        rb.velocity = Vector3.MoveTowards(rb.velocity, targetVelocity, Time.deltaTime * (rb.velocity.magnitude < targetVelocity.magnitude ? acceleration : deacceleration));
     }
 }
